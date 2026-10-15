@@ -1,0 +1,15 @@
+@if (state().request; as request) {
+  @if (request.status === 'failed') {
+    <p role="alert">{{ request.message }}</p>
+  }
+}
+
+<app-image-upload [disabled]="busy()" (fileSelected)="uploadImage($event)" />
+<p>Offen: {{ summary().open }}</p>
+<p> Bestätigt: {{ summary().accepted }}</p>
+<p> Verworfen: {{ summary().rejected }}</p>
+@if (state().imageUrl; as url) {
+  <app-image-review [imageUrl]="url" [suggestions]="state().suggestions" [disabled]="busy()" (decided)="decide($event)" />
+} @else {
+  <p>Bitte ein Bild hochladen.</p>
+}

@@ -1,0 +1,36 @@
+<div class="image-box">
+  <img [src]="imageUrl()" alt="Hochgeladenes Bild" (load)="onImageLoad($event)" />
+  @if (imageWidth() > 0) {
+    @for (s of suggestions(); track s.id) {
+      <div
+        class="bbox-wrapper"
+        [style.left.%]="(s.box.x / imageWidth()) * 100"
+        [style.top.%]="(s.box.y / imageHeight()) * 100"
+        [style.width.%]="(s.box.width / imageWidth()) * 100"
+        [style.height.%]="(s.box.height / imageHeight()) * 100"
+      >
+        <button
+          type="button"
+          class="bbox"
+          [class.accepted]="s.status === 'ACCEPTED'"
+          [class.rejected]="s.status === 'REJECTED'"
+          [style.border-color]="colorFor(s.id)"
+          [attr.aria-label]="'Vorschlag ' + s.id + ', Konfidenz ' + (s.confidence | percent) + ', ' + s.status"
+          (click)="select(s)"
+        ></button>
+        @if (selectedId() === s.id && s.status === 'OPEN') {
+          <div class="actions-container">
+            <div class="actions">
+              <button type="button" class="reject" aria-label="Verwerfen" [disabled]="disabled()" (click)="decide(s, false)">
+                ✗
+              </button>
+              <button type="button" class="accept" aria-label="Bestätigen" [disabled]="disabled()" (click)="decide(s, true)">
+                ✓
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  }
+</div>
