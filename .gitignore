@@ -1,0 +1,37 @@
+## Secrets & local config
+.env
+.env.*
+!.env.example
+
+## Backend (Maven)
+target/
+.mvn/wrapper/maven-wrapper.jar
+hs_err_pid*
+replay_pid*
+
+## Frontend (Angular / npm)
+node_modules/
+dist/
+.angular/
+coverage/
+out-tsc/
+npm-debug.log*
+
+## Logs
+*.log
+
+## IDEs (personal setup, not part of the project)
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+.apt_generated/
+.sts4-cache/
+
+## OS
+.DS_Store
+Thumbs.db
+desktop.ini

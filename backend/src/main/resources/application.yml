@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: buildingscanner
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:buildingscanner}
+    username: ${DB_USER:buildingscanner}
+    password: ${DB_PASSWORD:buildingscanner}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  mvc:
+    problemdetails:
+      enabled: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB

@@ -1,0 +1,17 @@
+body {
+  margin: 1rem;
+}
+
+:focus-visible {
+  outline: 3px solid #1a5fb4;
+  outline-offset: 2px;
+}
+
+label {
+  display: block;
+  margin: 0.5rem 0 0.25rem;
+}
+
+[role='alert'] {
+  color: #a51d2d;
+}
